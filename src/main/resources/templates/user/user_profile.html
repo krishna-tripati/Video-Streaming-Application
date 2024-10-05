@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+          th:replace="~{base :: parent(~{::#content},~{::title})}">
+
+<head>
+    <meta charset="UTF-8">
+    <title data-th-text="${loggedInUser.name}"></title>
+</head>
+<body>
+<div id="content">
+    <h1>This is User Profile</h1>
+</div>
+</body>
+</html>

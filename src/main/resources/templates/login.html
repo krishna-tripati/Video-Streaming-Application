@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"   th:replace="~{base :: parent(~{::#content},~{::title})}">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+</head>
+<body >
+
+
+    <div id="content" class="flex items-center justify-center ">
+
+<!--        <div class="w-full max-w-sm p-6 bg-white rounded-lg shadow-md">-->
+
+        <div class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+<!--           this is form-->
+            <form class="space-y-6"
+             data-th-action="@{'/authenticate'}"
+               method="post">
+                <h5 class="text-xl font-medium text-gray-900 dark:text-white">Login</h5>
+
+                <!-- Invalid username and password msg-->
+                <div data-th-if="${param.error}" class="text-red-600">
+                   Invalid Username and Password
+                </div>
+
+                <!-- logout msg -->
+                <div data-th-if="${param.logout}" class="text-green-600">
+                    You have been logged out
+                </div>
+
+
+                <div>
+                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                    <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Enter Email" required />
+                </div>
+                <div>
+                    <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                    <input type="password" name="password" id="password" placeholder="Enter Password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+                </div>
+
+                <!--submit button-->
+                <div class="mb-3 flex justify-center space-x-3">
+                    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">login</button>
+                    <button type="reset" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Reset</button>
+                </div>
+
+                <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
+                    Not registered? <a data-th-href="@{'/register'}" class="text-blue-700 hover:underline dark:text-blue-500">Create account</a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base :: parent(~{::#content},~{::title})}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Videos</title>
+</head>
+<body>
+
+<div id="content">
+<!--    <h1 class="text-5xl font-extrabold text-gray-700 text-center">Video Streaming Application</h1>-->
+
+    <div class="min-h-screen flex items-center justify-center bg-gray-100">
+        <div class="max-w-lg w-full bg-white p-6 rounded-lg shadow-lg">
+            <h2 class="text-3xl font-semibold mb-6 text-center text-gray-800">Upload Videos</h2>
+
+            <!---alert message-->
+            <div data-th-replace="message::messagebox"></div>
+
+    <form th:action="@{/user/upload-video}" th:method="post" enctype="multipart/form-data">
+
+
+
+        <!-- Title Field -->
+        <div class="mb-4">
+            <label for="title" class="block text-gray-700 font-semibold mb-2">Video Title:</label>
+            <input type="text" id="title" name="title"   th:value="${video.title}"
+                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                   placeholder="Enter video title" required>
+        </div>
+
+        <!-- Description Field      -->
+        <div class="mb-4">
+            <label for="description" class="block text-gray-700 font-semibold mb-2">Video Description:</label>
+            <textarea id="description" name="description"  th:value="${video.description}"
+                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      rows="4" placeholder="Enter video description" required></textarea>
+        </div>
+
+        <!-- Video Upload Field -->
+        <div class="mb-6">
+            <label for="video" class="block text-gray-700 font-semibold mb-2">Upload Video:</label>
+            <input type="file" id="video" name="file"
+                   class="w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500"
+                   required>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="text-center">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded-lg shadow-md">
+                Upload Video
+            </button>
+        </div>
+    </form>
+  </div>
+  </div>
+
+</div>
+</body>
+</html>

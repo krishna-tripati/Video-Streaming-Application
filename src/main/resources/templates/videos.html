@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base :: parent(~{::#content},~{::title})}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Videos</title>
+</head>
+<body>
+<div id="content">
+
+    <h1 class="text-2xl font-bold mb-4" >All Videos</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+
+        <div th:each="video : ${videos}" class="bg-white rounded-lg shadow-lg p-4">
+            <h2 class="text-xl font-semibold" th:text="${video.title}">Video Title</h2>
+            <p class="text-gray-600" th:text="${video.description}">Video Description</p>
+
+            <!-- Assuming that your videoPath stores the file path -->
+<!--            <video controls width="500" height="500" th:src="@{'/video/stream/' + ${video.videoId}}"></video>-->
+
+            <video class="w-full h-auto"  controls>
+                <source th:src="@{'/video/stream/' + ${video.videoId}}" type="video/mp4">
+            </video>
+
+
+        </div>
+    </div>
+
+
+
+</div>
+
+</body>
+</html>
